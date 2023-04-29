@@ -1,10 +1,10 @@
-# Consuming Third Party API in ASP.NET Web API (cooperative bank of kenya developer API)
-This is an example project demonstrating how to consume a third party API in an ASP.NET Web API project. In this example, we will be using the Co-opBank Kenya API as our third party API.
+# Consuming Third-Party API in ASP.NET Web API (Cooperative Bank of Kenya Developer API)
+This is an example project demonstrating how to consume a third-party API in an ASP.NET Web API project. In this example, we will be using the Co-op Bank Kenya API as our third-party API.
 
 ## Getting Started
 ### Prerequisites
 - [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
-- API credentials from [Co-opBank Kenya API](https://developer.co-opbank.co.ke/devportal/apis).
+- API credentials from [Co-op Bank Kenya API.](https://developer.co-opbank.co.ke/devportal/apis).
 - [MS SQL](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 ### Installation
 1. Clone the repository.
@@ -146,12 +146,16 @@ This is an example project demonstrating how to consume a third party API in an 
 
 ## Usage
 ### Adding Co~op Bank API credentials
-The API exposes an endpoint *'/create/credentials'* that allows you to create credentials required to call coopbank API. Click [here](https://developer.co-opbank.co.ke/devportal/apis)  to sign in to the coopbank api to get the credentials required:
-- ApiUrl
-- ConsumerKey
-- SecretKey
-- APIkey
-- TokenURl
+The API exposes an endpoint /api/credentials that accepts POST requests to add new API credentials. To add new credentials, use the following format:
+
+        {
+            "ApiUrl": "https://developer.co-opbank.co.ke:8243/EnrollmentsAPI/1.0.0",
+            "ConsumerKey": "YOUR_CONSUMER_KEY",
+            "SecretKey": "YOUR_SECRET_KEY",
+            "APIkey": "YOUR_API_KEY",
+            "TokenURl": "https://developer.co-opbank.co.ke:8243/token",
+            "IsDefault": true
+        }
 
 
 To update Credentials use the end point *'/update/credentials'* passing new credential data with *ApiCredentialsId* to be updated.
@@ -161,13 +165,22 @@ To get all credential use the endpoint *'/get/credentials'*.
 - Pass code = 1 and SearchId = ApiCredentialsId to pull specific credentials
 - Pass code = 2 to get default credentials that will be used by your API when calling Co~op Bank API.
 
+### Calling Co~op Bank API.
 Use endpoint *'/get/account/balance'* to call Coop Bank API for account balance.
 
 ## Contributing.
 Contributions are welcome! If you have any suggestions or bug reports, please open an issue or submit a pull request. 
 
-I have only called one end point of coopbank API for checking account balance, fill free to add on the rest of endpoint like Account FullStatement, IFT Account To Account, e.t.c 
+
 
 ## License
 
 This project is licensed under the MIT License - see the [ LICENSE](https://opensource.org/licenses/MIT) file for details.
+
+## Acknowledgments
+- [Co-opBank Kenya API](https://developer.co-opbank.co.ke/devportal/apis) for providing the API used in this project.
+
+## Conclusion
+This project demonstrates how to consume a third party API in an ASP.NET Web API project. By following the steps outlined in this project, you should be able to easily consume any third party API in your own ASP.NET Web API projects.
+
+Plus, I have only called one end point of coopbank API for checking account balance, fill free to add  and consume the rest of endpoint like Account FullStatement, IFT Account To Account, e.t.c 
